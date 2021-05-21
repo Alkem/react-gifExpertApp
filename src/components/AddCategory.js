@@ -18,11 +18,13 @@ const AddCategory = ({handlerAdd}) => {
 
 
     return (
-        <form onSubmit={handlerSubmit}>
+        <form onSubmit={handlerSubmit} className="form-group">
           <input
                 type="text" 
                 value = {inputValue}
-                onChange={handlerChange}
+                onChange={handlerChange} 
+                className="form-control"
+                placeholder="Ingrese una Categoria"
           />  
         </form>
     )

@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import GifImage from './GifImage';
 import '../styles/GifGrid.css'
 import {useAxiosGifs} from '../hooks/useAxiosGifs'
 import PropTypes from 'prop-types'
+import { CyanSpinner } from './utilities/Spinners';
 
 
 
@@ -12,19 +13,20 @@ const GifGrid = ({category}) => {
     const {data:images, loading} = useAxiosGifs(category);
     
     return (
-        <Fragment>
+        <div className = "bloq">
             <h3>{category}</h3>
             {
-                loading && <p>Loading...</p>
+                loading  && <CyanSpinner key="CyanSpinner" />
             }
-            <div className="card-grid">
+            <div className="row row-cols-1 row-cols-lg-3 g-2 g-lg-3">
             {
                 images.map(img => (
-                    <GifImage key = {img.id} {...img} />
-                ))    
+                    <div className="col">
+                        <GifImage key = {img.id} {...img} />
+                    </div>))    
             }
             </div>
-        </Fragment>
+        </div>
     )
 }
 

@@ -17,14 +17,16 @@ export const useAxiosGifs = (category) => {
     const params = {
         api_key: ApiKey,
         q:category,
-        limit: 10,
-        
+        limit: 25,
     };
+
+    
 
     GetRequest(URL_SEARCH,params)
     .then(response => {
           const images = response.data.data.map(img =>{
                 return {
+                    
                     id : img.id,
                     title : img.title,
                     url: img.images?.downsized_medium.url
